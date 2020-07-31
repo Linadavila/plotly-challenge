@@ -8,10 +8,7 @@ function init() {
 };
 
 init();
-//bbdata is data
-// d is data
-// IDs is ids
-//dropdownoptions is dataset
+
 
 //build dropdown menu
 function dropdown() {
@@ -26,6 +23,7 @@ function dropdown() {
         }
     })
 };
+
 dropdown();
 
 //funciton to change plots as per selection
@@ -38,10 +36,10 @@ function getdata(idselected) {
     
     //get filtered values to update plots
     d3.json("samples.json").then((data) => {
-        console.log(d);
+        console.log(data);
 
         var datafiltered = data.samples.filter(row => row.id === idselected);
-        console.log(datafiltered)
+        console.log(datafiltered);
 
         var values = datafiltered[0].sample_values;
         var otuID = datafiltered[0].otu_ids;
@@ -78,7 +76,7 @@ function getdata(idselected) {
         var layout = {
             title: "Top 10 OTUs",
             xaxis: { title: "Samples" },
-            yaxis: { title: "OTUs IDs" },
+            yaxis: { title: "OTUs IDs" }
         };
 
         Plotly.newPlot("bar", data_bar_graph, layout)
@@ -106,7 +104,7 @@ function getdata(idselected) {
         var layout2 = {
             title: "OTUs IDs - bubble view",
             xaxis: { title: "OTUS ids" },
-            yaxis: { title: "Sample Values" },
+            yaxis: { title: "Sample Values" }
         };
 
         Plotly.newPlot("bubble", data_bubble, layout2)
